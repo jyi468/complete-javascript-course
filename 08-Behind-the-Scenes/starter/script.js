@@ -1,5 +1,7 @@
 'use strict';
 
+// Scoping in Practice
+/*
 function calcAge(birthYear) {
     const age = 2037 - birthYear;
     function printAge() {
@@ -27,4 +29,4 @@ function calcAge(birthYear) {
 }
 
 const firstName = 'Jonas';
-calcAge(1991);
+calcAge(1991);*/

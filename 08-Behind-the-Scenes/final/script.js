@@ -41,23 +41,24 @@ calcAge(1991);
 // console.log(age);
 // printAge();
 
-
+*/
+/*
 ///////////////////////////////////////
 // Hoisting and TDZ in Practice
 
 // Variables
-console.log(me);
-// console.log(job);
-// console.log(year);
+console.log(me);  // undefined
+// console.log(job); // init error
+// console.log(year); // init error
 
 var me = 'Jonas';
 let job = 'teacher';
 const year = 1991;
 
 // Functions
-console.log(addDecl(2, 3));
-// console.log(addExpr(2, 3));
-console.log(addArrow);
+console.log(addDecl(2, 3)); // 5
+// console.log(addExpr(2, 3)); // init error
+console.log(addArrow); // undefined
 // console.log(addArrow(2, 3));
 
 function addDecl(a, b) {
@@ -72,7 +73,7 @@ var addArrow = (a, b) => a + b;
 
 // Example
 console.log(undefined);
-if (!numProducts) deleteShoppingCart();
+if (!numProducts) deleteShoppingCart(); // All products deleted! - numProducts initialized to undefined
 
 var numProducts = 10;
 
@@ -84,10 +85,10 @@ var x = 1;
 let y = 2;
 const z = 3;
 
-console.log(x === window.x);
-console.log(y === window.y);
-console.log(z === window.z);
-
+console.log(x === window.x); // true
+console.log(y === window.y); // false
+console.log(z === window.z); // false
+*/
 
 ///////////////////////////////////////
 // The this Keyword in Practice
@@ -95,13 +96,14 @@ console.log(this);
 
 const calcAge = function (birthYear) {
   console.log(2037 - birthYear);
-  console.log(this);
+  console.log(this);  // undefined in strict mode. In sloppy mode, it is the window object
 };
 calcAge(1991);
 
 const calcAgeArrow = birthYear => {
   console.log(2037 - birthYear);
-  console.log(this);
+  console.log(this); // window object. For arrow functions, it uses the 'this' of its parent, in this case it is the window (global)
+    // AKA lexical scope of parent
 };
 calcAgeArrow(1980);
 
@@ -119,12 +121,13 @@ const matilda = {
 };
 
 matilda.calcAge = jonas.calcAge;
-matilda.calcAge();
+matilda.calcAge(); // 20 = 2037 - 2017. Uses matilda's age, because this will be the matilda object that is calling the method.
+// It changes dynamically
 
 const f = jonas.calcAge;
-f();
+f(); // undefined
 
-
+/*
 ///////////////////////////////////////
 // Regular Functions vs. Arrow Functions
 // var firstName = 'Matilda';
